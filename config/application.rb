@@ -29,5 +29,14 @@ module Querydoctor
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.generators do |g|
+      g.test_framework  :rspec
+      g.view_specs false
+      g.request_specs false
+      g.routing_specs false
+      g.factory_girl suffix: 'factory'
+    end
+
   end
 end
