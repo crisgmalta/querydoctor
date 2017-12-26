@@ -1,0 +1,495 @@
+swagger: '2.0'
+info:
+  description: Api QueryDoctor
+  version: 1.0.0
+  title: Sistema consultas - QueryDoctor
+host: "localhost:3000"
+basePath: "/api/v1/"
+paths:
+  /especialidades:
+    get:
+      tags:
+      - Especialidade
+      summary: Lista todas as Especialidades
+      description: |
+        Lista todas as especialidades
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Lista todas as especialidades
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Especialidade'
+    post:
+      tags:
+      - Especialidade
+      summary: Criação de uma nova Especialidade
+      description: |
+        Criação de uma nova Especialidade
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Especialidade
+        description: Dados da especialidade
+        schema:
+          $ref: '#/definitions/Especialidade'
+      responses:
+        201:
+          description: Item criado
+          schema:
+            $ref: '#/definitions/Especialidade'
+  /especialidades/:id:
+    get:
+      tags:
+      - Especialidade
+      summary: Mostra Especialidade
+      description: 
+        Mostra uma Especialidade
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id da Especialidade
+        required: true
+        type: integer
+      responses:
+        200:
+          description: Dados da Especialidade
+          schema:
+            $ref: '#/definitions/Especialidade'
+    put:
+      tags:
+      - Especialidade
+      summary: Atualizar a Especialidade
+      description: 
+        Atualizar a Especialidade
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id da Especialidade
+        required: true
+        type: string
+      - in: body
+        name: Especialidade
+        description: Dados da Especialidade
+        schema:
+          $ref: '#/definitions/Especialidade'
+      responses:
+        200:
+          description: Especialidade data
+          schema:
+            $ref: '#/definitions/Especialidade'
+    delete:
+      tags:
+      - Especialidade
+      summary: Excluir a Especialidade
+      description: 
+        Excluir a Especialidade
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id da Especialidade
+        required: true
+        type: string
+      responses:
+        204:
+          description: empty
+
+  /convenios:
+    get:
+      tags:
+      - Convenio
+      summary: Lista todos os Convenios
+      description: |
+        Lista todos os Convenios
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Lista todos os convenios
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Convenio'
+    post:
+      tags:
+      - Convenio
+      summary: Criação de um novo Convenio
+      description: 
+        Criação de um novo Convenio
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Convenio
+        description: Dados do Convenio
+        schema:
+          $ref: '#/definitions/Convenio'
+      responses:
+        201:
+          description: Item criado
+          schema:
+            $ref: '#/definitions/Convenio'
+  /convenios/:id:
+    get:
+      tags:
+      - Convenio
+      summary: Mostra Convenio
+      description: 
+        Mostra um Convenio
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Convenio
+        required: true
+        type: integer
+      responses:
+        200:
+          description: Dados do Convenio
+          schema:
+            $ref: '#/definitions/Convenio'
+    put:
+      tags:
+      - Convenio
+      summary: Atualizar o Convenio
+      description: |
+        Atualizar o Convenio
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Convenio
+        required: true
+        type: string
+      - in: body
+        name: Convenio
+        description: Dados do Convenio
+        schema:
+          $ref: '#/definitions/Convenio'
+      responses:
+        200:
+          description: Convenio data
+          schema:
+            $ref: '#/definitions/Convenio'
+    delete:
+      tags:
+      - Convenio
+      summary: Excluir o Convenio
+      description: 
+        Excluir o Convenio
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Convenio
+        required: true
+        type: string
+      responses:
+        204:
+          description: empty
+  
+  /medicos:
+    get:
+      tags:
+      - Medico
+      summary: "Busca medicos"
+      description: "Busca medicos"
+      produces:
+      - "application/json"
+      parameters:
+      - in: query
+        name: especialidade_id
+        description: filtra medicos por id da especialidade
+        required: false
+        type: integer
+      responses:
+        200:
+          description: Lista todos os medicos
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Medico'
+
+    post:
+      tags:
+      - Medico
+      summary: Criação de um novo Medico
+      description: |
+        Criação de um novo Medico
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Medico
+        description: Dados do Medico
+        schema:
+          $ref: '#/definitions/Medico'
+      responses:
+        201:
+          description: Item criado
+          schema:
+            $ref: '#/definitions/Medico'
+  
+  /medicos/:id:
+    get:
+      tags:
+      - Medico
+      summary: Mostra Medico
+      description: 
+        Mostra Medico
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Medico
+        required: true
+        type: integer
+      responses:
+        200:
+          description: Dados do Medico
+          schema:
+            $ref: '#/definitions/Medico'
+    put:
+      tags:
+      - Medico
+      summary: Atualizar o Medico
+      description: 
+        Atualizar o Medico
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Medico
+        required: true
+        type: string
+      - in: body
+        name: Medico
+        description: Dados do Medico
+        schema:
+          $ref: '#/definitions/Medico'
+      responses:
+        200:
+          description: dados do Medico 
+          schema:
+            $ref: '#/definitions/Medico'
+    delete:
+      tags:
+      - Medico
+      summary: Excluir o Medico
+      description: 
+        Excluir o Medico
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Medico
+        required: true
+        type: integer
+      responses:
+        204:
+          description: empty
+
+  /pacientes:
+    get:
+      tags:
+      - Paciente
+      summary: Lista todos os Paciente
+      description: |
+        Lista todos os Paciente
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Lista todos os Paciente
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Paciente'
+    post:
+      tags:
+      - Paciente
+      summary: Criação de um novo Paciente
+      description: |
+        Criação de um novo Paciente
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Paciente
+        description: Dados do Paciente
+        schema:
+          $ref: '#/definitions/Paciente'
+      responses:
+        201:
+          description: Item criado
+          schema:
+            $ref: '#/definitions/Paciente'
+  /pacientes/:id:
+    get:
+      tags:
+      - Paciente
+      summary: Mostra Paciente
+      description: 
+        Mostra um Paciente
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Paciente
+        required: true
+        type: integer
+      responses:
+        200:
+          description: Dados do Paciente
+          schema:
+            $ref: '#/definitions/Paciente'
+    put:
+      tags:
+      - Paciente
+      summary: Atualizar o Paciente
+      description: 
+        Atualizar  o Paciente
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Paciente
+        required: true
+        type: string
+      - in: body
+        name: Paciente
+        description: Dados do Paciente
+        schema:
+          $ref: '#/definitions/Paciente'
+      responses:
+        200:
+          description: Dados do Paciente
+          schema:
+            $ref: '#/definitions/Paciente'
+    delete:
+      tags:
+      - Paciente
+      summary: Excluir o Paciente
+      description: 
+        Excluir o Paciente
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: id do Paciente
+        required: true
+        type: string
+      responses:
+        204:
+          description: empty
+
+
+definitions:
+  Especialidade:
+    type: object
+    required:
+    - nome
+    properties:
+      id:
+        type: integer
+        example: 1
+        readOnly: true
+      nome:
+        type: string
+        example: Ginecologista
+    
+  Convenio:
+    type: object
+    required:
+    - nome
+    properties:
+      id:
+        type: integer
+        example: 1
+        readOnly: true
+      nome:
+        type: string
+        example: Unimed
+
+  Medico:
+    type: object
+    required:
+    - nome
+    properties:
+      id:
+        type: integer
+        example: 1
+        readOnly: true
+      nome:
+        type: string
+        example: Unimed
+      especialidade_id:
+        type: integer
+        example: 3
+        
+  Paciente:
+    type: object
+    required:
+    - nome
+    properties:
+      id:
+        type: integer
+        example: 1
+        readOnly: true
+      nome:
+        type: string
+        example: Carlos Alberto
+      data_nascimento:
+        type: string
+        example: 12/12/1980
+      rg:
+        type: string
+        example: 23454345-6
+      telefone:
+        type: string
+        example: (12)2345456
+      convenio_id:
+        type: integer
+        example: 3

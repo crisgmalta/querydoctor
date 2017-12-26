@@ -35,8 +35,14 @@ class Api::V1::ConveniosController < ApplicationController
 
   # DELETE /api/v1/convenios/1
   def destroy
-    @convenio.destroy
+    if @convenio.pacientes.any?
+      render json: { errors: { convenio_id: ["Existem pacientes associados neste convenio."] }}, status: :unprocessable_entity
+    else
+      @convenio.destroy
+    end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -46,6 +52,6 @@ class Api::V1::ConveniosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def convenio_params
-      params.fetch(:convenio, {})
+      params.fetch(:convenio).permit(:nome)
     end
 end

@@ -1,24 +1,24 @@
-# README
+# Query Doctor API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## API para CRUD para
+* Convenios
+* Especialidades medicas
+* Medicos
+* Pacientes
 
-Things you may want to cover:
+No root path da API estao disponiveis todos os entrypoints que utilizam o padrao RESTFul
+Há também um arquivo swagger.yml com a descriçao detalhadas de todos os entrypoints da API
 
-* Ruby version
+## Dependencias
+* ruby 2.4.0
 
-* System dependencies
+## Setup do projeto
+Para configuar este projeto clone este repositorio e execute
+* bundle install 
+* rails db:create
+* rails db:migrate 
+* rails db:seed
+* rails s (API estará disponível na porta 3000)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Como executar testes
+* rake spec

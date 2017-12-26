@@ -10,12 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221221507) do
+ActiveRecord::Schema.define(version: 20171222003828) do
 
   create_table "convenios", force: :cascade do |t|
-    t.string "name"
+    t.string "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "especialidades", force: :cascade do |t|
+    t.string "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "medicos", force: :cascade do |t|
+    t.string "nome"
+    t.integer "especialidade_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["especialidade_id"], name: "index_medicos_on_especialidade_id"
+  end
+
+  create_table "medicos_pacientes", id: false, force: :cascade do |t|
+    t.integer "paciente_id"
+    t.integer "medico_id"
+    t.index ["medico_id"], name: "index_medicos_pacientes_on_medico_id"
+    t.index ["paciente_id"], name: "index_medicos_pacientes_on_paciente_id"
+  end
+
+  create_table "pacientes", force: :cascade do |t|
+    t.string "nome"
+    t.date "data_nascimento"
+    t.string "rg"
+    t.string "telefone"
+    t.integer "convenio_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["convenio_id"], name: "index_pacientes_on_convenio_id"
   end
 
 end
