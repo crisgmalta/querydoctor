@@ -7,6 +7,7 @@
 * Pacientes
 
 No root path da API estao disponiveis todos os entrypoints que utilizam o padrao RESTFul
+
 Há também um arquivo swagger.yml com a descriçao detalhadas de todos os entrypoints da API
 Para visualizar o conteudo do swagger.yml recomendo o uso do editor online do swagger https://editor.swagger.io/
 
